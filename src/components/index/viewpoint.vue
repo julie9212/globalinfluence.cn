@@ -3,9 +3,9 @@
         <Row class="model">
             <Col span="20" class="icon"><h2>研究观点</h2></Col>
             <Col span="4">
-                <!-- <router-link to="/list?id=2"> -->
+                <router-link to="/list/0/2">
                     <p>更多</p>
-                <!-- </router-link> -->
+                </router-link>
             </Col>
         </Row>
         <Row :gutter="16">

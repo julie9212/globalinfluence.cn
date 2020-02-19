@@ -3,7 +3,7 @@
         <Row class="model model-right">
             <Col span="20" class="icon"><h2>智库新闻</h2></Col>
             <Col span="4">
-                <router-link to="/list?id=1">
+                <router-link to="/news/0/1">
                     <p>更多</p>
                 </router-link>
             </Col>

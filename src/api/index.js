@@ -13,15 +13,6 @@ let api = {
     modelsAP: param => { 
         return ajax.post('models/aboutProfile', param);
     },
-    modelsAFW: param => { 
-        return ajax.post('models/aboutFramework', param);
-    },
-    modelsAL: param => { 
-        return ajax.post('models/aboutList', param);
-    },
-    modelsAF: param => { 
-        return ajax.post('models/aboutForm', param);
-    },
     insertAF: param => { 
         return ajax.post('models/insertForm', param);
     },

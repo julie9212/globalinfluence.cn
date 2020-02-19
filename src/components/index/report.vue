@@ -12,7 +12,7 @@
                 </div>
             </Col>
             <Col span="4">
-                <router-link to="/report?id=3">
+                <router-link to="/report/0/3">
                     <p>更多</p>
                 </router-link>
             </Col>

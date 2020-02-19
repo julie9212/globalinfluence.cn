@@ -3,7 +3,7 @@
         <Row class="model">
             <Col span="20" class="icon"><h2>智库视频</h2></Col>
             <Col span="4">
-                <router-link to="/video?id=5">
+                <router-link to="/video/0/5">
                     <p>更多</p>
                 </router-link>
             </Col>

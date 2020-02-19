@@ -6,15 +6,6 @@
 
         <Row :gutter="30" style="padding:15px 0 0px">
             <Col span="24">
-                <div class="column_nav">
-                    <div v-if="columnPid == 0">
-                        <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">全部</p>
-                    </div>
-                    <div v-else>
-                        <p @click="routeColumnAll()">全部</p>
-                    </div>
-                </div>
-               
                 <div v-for="info in column" class="column_nav">
                     <div v-if="columnId == info.id">
                         <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">{{info.name}}</p>
@@ -93,12 +84,6 @@ export default {
         // 子栏目url
         routeColumn(template,pid,id){
             this.$router.push({ path: '/'+ template + '/' + pid + '/' +id});
-            this.list();
-        },
-        // 顶级栏目内容
-        routeColumnAll(){
-            let allId = this.$route.params.pid;
-            this.$router.push({ path: '/'+ this.template + '/0/' +allId});
             this.list();
         },
         page(num){

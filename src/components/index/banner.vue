@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- <Carousel v-model="value2"> -->
         <Carousel >
             <Carousel-item v-for="list in banner">
                 <div class="banner" @click="ContentInfoid(list.id)" style="width:857px;height:460px">
@@ -10,22 +9,6 @@
                     </div>
                 </div>
             </Carousel-item>
-             <!-- <Carousel-item>
-                <div class="banner">
-                    <img src="../../../public/img/3banner.png" width="100%">
-                    <div class="banner_title">
-                        <p>{{item| ellipsis}}</p>
-                    </div>
-                </div>
-            </Carousel-item>
-            <Carousel-item>
-                <div class="banner">
-                    <img src="../../../public/img/3banner.png" width="100%">
-                    <div class="banner_title">
-                        <p>{{items| ellipsis}}</p>
-                    </div>
-                </div>
-            </Carousel-item> -->
         </Carousel>
     </div>
 </template>

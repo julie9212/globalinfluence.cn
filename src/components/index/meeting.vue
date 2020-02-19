@@ -3,7 +3,7 @@
         <Row class="model model-right">
             <Col span="20" class="icon"><h2>智库会议</h2></Col>
             <Col span="4">
-                <router-link to="/meeting?id=4">
+                <router-link to="/meeting/0/4">
                     <p>更多</p>
                 </router-link>
             </Col>
