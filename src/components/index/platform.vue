@@ -4,7 +4,7 @@
             <Col span="20" class="icon"><h2>智库平台</h2></Col>
             <!-- <Col span="4"><p>更多</p></Col> -->
         </Row>
-        <Row :gutter="16" class="model model-right" style="padding:15px 15px 5px">
+        <Row :gutter="16" class="model model-right" style="padding:15px 15px 15px">
             <Col span="24" v-for="list in ad3">
                 <a :href="list.url" target="_blank">
                     <img :src="list.img_url" alt="" width="100%" style="margin:5px 0">

@@ -112,7 +112,7 @@ export default {
 <style lang="less" scope>
 .report .model{
     padding-top:25px;
-    padding-bottom:15px;
+    padding-bottom:25px;
 }
 .report .model .icon{
     border-left:3px solid #0CA4D6;

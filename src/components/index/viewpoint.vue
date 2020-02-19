@@ -98,6 +98,7 @@ export default {
 }
 .viewpoint .model{
     padding-top:25px;
+    padding-bottom:10px;
 }
 .viewpoint .model .icon{
     border-left:3px solid #0CA4D6;

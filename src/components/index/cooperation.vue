@@ -1,9 +1,9 @@
 <template>
-    <div style="padding-top:20px" class="cooperation">
+    <div style="padding-top:25px" class="cooperation">
         <Row class="model">
             <Col span="20" class="icon"><h2>合作伙伴</h2></Col>
         </Row>
-        <Row :gutter="16" class="model model-right" style="padding:15px 0 25px">
+        <Row :gutter="16" class="model model-right" style="padding:20px 0 25px">
             <Col span="3" v-for="list in ad4">
                 <a :href="list.url" target="_blank">
                     <img :src="list.img_url" alt="" width="100%" style="margin:5px 0">

@@ -78,7 +78,7 @@ export default {
 }
 .video .model{
     padding-top:25px;
-    padding-bottom:15px;
+    padding-bottom:25px;
 }
 .video .model .icon{
     border-left:3px solid #0CA4D6;
