@@ -3,16 +3,16 @@
         <Row class="model">
             <Col span="20" class="icon"><h2>研究观点</h2></Col>
             <Col span="4">
-                <router-link to="/list?id=2">
+                <!-- <router-link to="/list?id=2"> -->
                     <p>更多</p>
-                </router-link></Col>
+                <!-- </router-link> -->
+            </Col>
         </Row>
         <Row :gutter="16">
             <Col span="8" v-for="list in viewpoint.slice(0, 9)">
                 <Card style="width:100%;height:350px;margin-top:15px" >
-                    <h3 slot="title" style="padding:0">
+                    <h3 slot="title" @click="routeColumn(list.template,list.pid,list.id)" style="padding:0">
                         {{list.name}}
-                        <!-- {{list.id}} -->
                     </h3>
                     <Col span="24">
                         <div class="thumbnail"  v-for="(item, index) of list.content.slice(0, 1)" :key="index">
@@ -64,7 +64,16 @@ export default {
                 query: {id:id}
             });
             window.open(routeUrl.href, '_blank');
-        }       
+        },
+        changeInfoid(n){
+            // this.infoid = n;
+            // this.list(1);
+            console.log(n);
+        },   
+               // 子栏目url
+        routeColumn(template,pid,id){
+            this.$router.push({ path: '/'+ template + '/' + pid + '/' +id});
+        },    
     },
 }
 </script>

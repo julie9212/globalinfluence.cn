@@ -4,36 +4,42 @@
            <img :src="banner.img_url" width="100%">
         </div>
 
-        <Row :gutter="30" style="padding:15px 0 0px">
+         <Row :gutter="30" style="padding:15px 0 0px">
             <Col span="24">
-                <div class="column_nav">
-                    <div v-if="columnPid == 0">
-                        <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">全部</p>
+                <Menu mode="horizontal" active-name="0">
+                    <div class="layout-assistant">
+                        <!-- 企业简介 -->
+                        <!-- <div v-for="data in data.slice(0, 1)">
+                            <Menu-item :name="data.id">
+                                <p @click="changeInfo(6,data.template)">{{data.name}}</p>
+                            </Menu-item>
+                        </div> -->
+                        <!-- 列表页 -->
+                        <!-- <div v-for="data in data.slice(1, 6)">
+                            <Menu-item :name="data.id">
+                                <p @click="changeInfo(data.id,data.template)">{{data.name}}</p>
+                            </Menu-item>
+                        </div> -->
+                        <!-- 表单 -->
+                        <!-- <div v-for="data in data.slice(6, 7)">
+                            <Menu-item :name="data.id">
+                                <p @click="changeInfo(data.id,data.template)">{{data.name}}</p>
+                            </Menu-item>
+                        </div> -->
                     </div>
-                    <div v-else>
-                        <p @click="routeColumnAll()">全部</p>
-                    </div>
-                </div>
-               
-                <div v-for="info in column" class="column_nav">
-                    <div v-if="columnId == info.id">
-                        <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">{{info.name}}</p>
-                    </div>
-                    <div v-else>
-                        <p @click="routeColumn(info.template,info.pid,info.id)">{{info.name}}</p>
-                    </div>
-                </div>
+                </Menu>
             </Col>
         </Row>
 
         <Row :gutter="30" style="padding:0px 0 60px">
-            <Col span="24">
+            <Col span="17">
                 <About :info="info"></About>
-                <br><br>
             </Col>
-            <div style="text-align:center">
-                <Page :total="total" show-total  show-elevator @on-change="page"></Page>
-            </div>
+            <Col span="7">
+                <div style="background:#fff;padding:15px;margin-top:10px">
+                     <Ad :meeting="meeting" :ad2="ad2"></Ad>
+                </div>
+            </Col>
         </Row>
 
     </div>
@@ -41,12 +47,13 @@
 
 <script>
 
-import About from '../components/about/list'
-
+import About from '../components/about/profile'
+import Ad from '../components/list/ad'
 
 export default {
     components:{
         About,
+        Ad
     },
     data() {
         return {

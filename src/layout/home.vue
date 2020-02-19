@@ -77,7 +77,7 @@
                                 <Menu-item name="a"><p @click="home()" style="line-height:28px">智库首页</p></Menu-item>
                                 <div v-for="info in column">
                                     <Menu-item :name="info.id">
-                                        <p @click="routeColumn(info.id,info.template)" style="line-height:28px;">{{info.name}}</p>
+                                        <p @click="routeColumn(info.template,info.pid,info.id)" style="line-height:28px;">{{info.name}}</p>
                                     </Menu-item>
                                 </div>
                             </div>
@@ -361,8 +361,9 @@ export default {
             this.$router.push({path:'/'})
             this.reload();
         },
-        routeColumn(id,template){
-            this.$router.push({ path: '/'+ template , query: {id} });
+        routeColumn(template,pid,id){
+            // this.$router.push({ path: '/'+ template , query: {id} });
+            this.$router.push({ path: '/'+ template + '/' + pid + '/' +id});
             this.reload();
         },
 

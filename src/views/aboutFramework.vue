@@ -6,29 +6,23 @@
 
         <Row :gutter="30" style="padding:15px 0 0px">
             <Col span="24">
-            <!-- <Menu mode="horizontal" active-name="0" :active-name="data[0].id"> -->
-                <Menu mode="horizontal" active-name="0">
-                    <div class="layout-assistant">
-                        <!-- 企业简介 -->
-                        <div v-for="data in data.slice(0, 1)">
-                            <Menu-item :name="data.id">
-                                <p @click="changeInfo(6,data.template)">{{data.name}}</p>
-                            </Menu-item>
-                        </div>
-                        <!-- 列表页 -->
-                        <div v-for="data in data.slice(1, 6)">
-                            <Menu-item :name="data.id">
-                                <p @click="changeInfo(data.id,data.template)">{{data.name}}</p>
-                            </Menu-item>
-                        </div>
-                        <!-- 表单 -->
-                        <div v-for="data in data.slice(6, 7)">
-                            <Menu-item :name="data.id">
-                                <p @click="changeInfo(data.id,data.template)">{{data.name}}</p>
-                            </Menu-item>
-                        </div>
+                <div class="column_nav">
+                    <div v-if="columnPid == 0">
+                        <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">全部</p>
                     </div>
-                </Menu>  
+                    <div v-else>
+                        <p @click="routeColumnAll()">全部</p>
+                    </div>
+                </div>
+               
+                <div v-for="info in column" class="column_nav">
+                    <div v-if="columnId == info.id">
+                        <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">{{info.name}}</p>
+                    </div>
+                    <div v-else>
+                        <p @click="routeColumn(info.template,info.pid,info.id)">{{info.name}}</p>
+                    </div>
+                </div>
             </Col>
         </Row>
         
@@ -58,42 +52,67 @@ export default {
     },
     data() {
         return {
-            id:{},
-            data:'',
+            column:'',
+            columnId:this.$route.params.id,
+            columnPid:this.$route.params.pid,
+            template:'',
+            info:'',
+            total: 1,
             meeting:'',
             ad2:'',
             banner:'没有上传banner',
-            info:'',
         }
     },   
     mounted() {
         this.list();
     },
  methods: {
-        async list(){
+        async list(page= 1){
+            this.loading = true;
+            this.columnId =this.$route.params.id;
+            this.columnPid =this.$route.params.pid;
+            let aa =this.$route.params
             let param = {
-                id:this.$route.query.id
+                id:this.$route.params.id,
+                pid:this.$route.params.pid,
+                page:page,
             }
-            let res = await this.$api.modelsAFW(param);
+            let res = await this.$api.models(param);
             if(res){
-                this.data = res.data;
+                this.total = res.total;
+                this.info = res.info;
+                this.column = res.column;
                 this.meeting = res.meeting;
                 this.ad2 = res.ad2;
                 this.banner = res.banner;
-                this.info = res.info;
+                this.template = res.template;
                 console.log(res);
             }
             this.loading = false;
         },
-
-        changeInfo(id,template){
-            this.$router.push({ path: '/'+ template , query: {id} });
+        // 子栏目url
+        routeColumn(template,pid,id){
+            this.$router.push({ path: '/'+ template + '/' + pid + '/' +id});
+            this.list();
         },
+        // 顶级栏目内容
+        routeColumnAll(){
+            let allId = this.$route.params.pid;
+            this.$router.push({ path: '/'+ this.template + '/0/' +allId});
+            this.list();
+        },
+        page(num){
+            this.list(num);
+        }
 
     },
 }
 </script>
 
 <style lang="less" scoped>
-
+.column_nav{
+    padding:0px 15px 10px;
+    float: left;
+    font:14px/28px '微软雅黑'
+}
 </style>

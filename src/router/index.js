@@ -14,7 +14,7 @@ export default [
                 component: () => import('../views/search.vue'),
             },
             {
-                path: '/list',
+                path: '/list/:pid/:id',
                 component: () => import('../views/list/list.vue'),
                 meta:{
                     title: '着迷网话题详情页',
@@ -22,35 +22,35 @@ export default [
                 }
             },
             {
-                path: '/news',
+                path: '/news/:pid/:id',
                 component: () => import('../views/list/news.vue'),
             },
             {
-                path: '/report',
+                path: '/report/:pid/:id',
                 component: () => import('../views/list/report.vue'),
             },
             {
-                path: '/meeting',
+                path: '/meeting/:pid/:id',
                 component: () => import('../views/list/meeting.vue'),
             },
             {
-                path: '/video',
+                path: '/video/:pid/:id',
                 component: () => import('../views/list/video.vue'),
             },
             {
-                path: '/aboutlist',
+                path: '/aboutlist/:pid/:id',
                 component: () => import('../views/aboutList.vue'),
             },
             {
-                path: '/aboutprofile',
+                path: '/aboutprofile/:pid/:id',
                 component: () => import('../views/aboutProfile.vue'),
             },
             {
-                path: '/aboutframework',
+                path: '/aboutframework/:pid/:id',
                 component: () => import('../views/aboutFramework.vue'),
             },
             {
-                path: '/aboutform',
+                path: '/aboutform/:pid/:id',
                 component: () => import('../views/aboutForm.vue'),
             },
             {
