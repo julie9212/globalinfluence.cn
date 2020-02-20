@@ -13,7 +13,7 @@
                         <p @click="routeColumnAll()">全部</p>
                     </div>
                 </div>
-               
+                
                 <div v-for="info in column" class="column_nav">
                     <div v-if="columnId == info.id">
                         <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">{{info.name}}</p>
@@ -75,7 +75,6 @@ export default {
             this.loading = true;
             this.columnId =this.$route.params.id;
             this.columnPid =this.$route.params.pid;
-            let aa =this.$route.params
             let param = {
                 id:this.$route.params.id,
                 pid:this.$route.params.pid,

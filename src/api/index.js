@@ -4,6 +4,9 @@ let api = {
     index: () => { 
         return ajax.post('index/index');
     },
+    indexNav: param => { 
+        return ajax.post('index/indexNav', param);
+    },
     indexList: () => { 
         return ajax.post('index/indexList');
     },

@@ -71,8 +71,31 @@
             <Nav>
                 <Row class="header_bottom">
                     <Col span="24">
-                    <!-- <Menu mode="horizontal" active-name="0" :active-name="data[0].id"> -->
-                        <Menu mode="horizontal" :active-name="index" class="header_main">
+
+                        <div class="header_main">
+                            <div class="layout-assistant">
+                                <div class="column_nav">
+                                    <div v-if="columnName == 0">
+                                        <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">首页</p>
+                                    </div>
+                                    <div v-else>
+                                        <p @click="home()">首页</p>
+                                    </div>
+                                </div>
+                                
+                                <div v-for="info in column" class="column_nav">
+                                    <div v-if="columnName == info.id">
+                                        <p style="color:#2d8cf0;border-bottom:2px solid #2d8cf0">{{info.name}}</p>
+                                    </div>
+                                    <div v-else>
+                                        <p @click="routeColumn(info.template,info.pid,info.id)">{{info.name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <Menu mode="horizontal" :active-name="index" class="header_main">
                             <div class="layout-assistant" style="padding-top:8px">
                                 <Menu-item name="a"><p @click="home()" style="line-height:28px">智库首页</p></Menu-item>
                                 <div v-for="info in column">
@@ -81,7 +104,17 @@
                                     </Menu-item>
                                 </div>
                             </div>
-                        </Menu>
+                        </Menu> -->
+                        <!-- <Menu mode="horizontal" :active-name="index" class="header_main">
+                            <div class="layout-assistant" style="padding-top:8px">
+                                <Menu-item name="a"><p @click="home()" style="line-height:28px">智库首页</p></Menu-item>
+                                <div v-for="info in column">
+                                    <Menu-item :name="info.id">
+                                        <p @click="routeColumn(info.template,info.pid,info.id)" style="line-height:28px;">{{info.name}}</p>
+                                    </Menu-item>
+                                </div>
+                            </div>
+                        </Menu> -->
                     </Col>
                 </Row>
             </Nav>
@@ -277,6 +310,9 @@ export default {
     data() {
         return {
             loading:false,
+            columnName:0,
+            columnId:'0',
+            columnPid:'0',
             navid:this.$route.query.id,
             userInfo: '',
             index:'a',
@@ -333,6 +369,11 @@ export default {
         this.info();
         this.loginInfo();
     },
+    watch:{
+        $route(){
+            this.global();
+        }
+    },
     methods: {
         reload (){
             this.isRouterAlive = false
@@ -347,6 +388,17 @@ export default {
                     globals:'1000px'
                 };
             }
+
+            let param = {
+                id:this.$route.params.id || 0,
+                pid:this.$route.params.pid || 0,
+            }
+            let res = await this.$api.indexNav(param);
+            if (res) {
+                this.columnName = res.columnName;
+                console.log(res)
+            }
+            this.reload();
         },
         async info(){
             this.$Spin.show();
@@ -359,12 +411,14 @@ export default {
         },
         home(){
             this.$router.push({path:'/'})
-            this.reload();
+            this.global();
+            
         },
         routeColumn(template,pid,id){
             // this.$router.push({ path: '/'+ template , query: {id} });
             this.$router.push({ path: '/'+ template + '/' + pid + '/' +id});
-            this.reload();
+            this.global();
+            
         },
 
         // 登录开始
@@ -551,6 +605,13 @@ export default {
     width: 100%;
     background: rgba(255,255,255,0.7);
     background-image: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.6),rgba(255,255,255,0));
+}
+
+.column_nav{
+    padding:10px 15px 10px;
+    float: left;
+    font:14px/28px '微软雅黑';
+    line-height:28px;
 }
 
 .layout-logo img{
