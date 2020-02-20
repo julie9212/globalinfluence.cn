@@ -63,7 +63,7 @@ export default {
             this.loading = true;
             this.columnId =this.$route.params.id;
             this.columnPid =this.$route.params.pid;
-            let aa =this.$route.params
+            let aa =this.$route.params;
             let param = {
                 id:this.$route.params.id,
                 pid:this.$route.params.pid,
