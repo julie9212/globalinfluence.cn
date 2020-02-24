@@ -93,28 +93,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <!-- <Menu mode="horizontal" :active-name="index" class="header_main">
-                            <div class="layout-assistant" style="padding-top:8px">
-                                <Menu-item name="a"><p @click="home()" style="line-height:28px">智库首页</p></Menu-item>
-                                <div v-for="info in column">
-                                    <Menu-item :name="info.id">
-                                        <p @click="routeColumn(info.template,info.pid,info.id)" style="line-height:28px;">{{info.name}}</p>
-                                    </Menu-item>
-                                </div>
-                            </div>
-                        </Menu> -->
-                        <!-- <Menu mode="horizontal" :active-name="index" class="header_main">
-                            <div class="layout-assistant" style="padding-top:8px">
-                                <Menu-item name="a"><p @click="home()" style="line-height:28px">智库首页</p></Menu-item>
-                                <div v-for="info in column">
-                                    <Menu-item :name="info.id">
-                                        <p @click="routeColumn(info.template,info.pid,info.id)" style="line-height:28px;">{{info.name}}</p>
-                                    </Menu-item>
-                                </div>
-                            </div>
-                        </Menu> -->
                     </Col>
                 </Row>
             </Nav>

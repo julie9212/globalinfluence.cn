@@ -6,8 +6,11 @@
                 <div style="padding:0px 15px">
                     <p style="font: 26px/30px '微软雅黑'">{{info.title}}</p><br>
                     <Row>
-                        <Col span="24">
+                        <Col span="20">
                             <p style="font:16px/26px '微软雅黑';color:#666"><span>{{info.source}}</span> / <span>{{info.writer}}</span> / <span>{{info.create_time}}</span></p>
+                        </Col>
+                        <Col span="4">
+                            <!-- <button @click="thisInfo">分享到微博</button> -->
                         </Col>
                     </Row><br>
                     <Row>
@@ -30,19 +33,25 @@
 </template>
  
 <script>
+
 export default {
     props:[
         "info",
     ],
     data(){
         return {
+            // url:window.location.href,
+            // wb:"",
         }
     },
     mounted() {
-        
+
     },
     methods: {
-       
+    //    thisInfo (){
+    //         this.wb = "http://service.weibo.com/share/share.php?title="+this.info.title+"&url="+this.url;
+    //         window.open(this.wb,'_blank')
+    //    },
     },
 }
 </script>
