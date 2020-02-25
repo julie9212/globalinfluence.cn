@@ -14,7 +14,7 @@
                     <Row>
                         <Col span="8">
                             <Form-item label="来源" prop="source">
-                                <Input v-model="form.source" placeholder="请输入"></Input>
+                                <Input v-model="form.source" placeholder="请输入文章来源，或原创"></Input>
                             </Form-item>
                         </Col>
                         <Col span="8">
@@ -49,7 +49,7 @@
                                 ref="uploadFile"
                                 action="http://mchapi.globalinfluence.cn/admin.php/admin/system/upload"
                                 :format="['jpg','jpeg','png']"
-                                :max-size="300"
+                                :max-size="800"
                                 :show-upload-list="false"
                                 :on-success="uploadSuccess"
                                 :on-format-error="handleFormatError"
@@ -57,14 +57,14 @@
                                 :before-upload="handleBeforeUpload"
                                 >
                                 <Button icon="ios-cloud-upload-outline">上传文件</Button>
-                                <p>（请上传小于300kb，格式为jpg、png、jpeg，长宽160:260的图片）</p>
+                                <p>（请上传小于800kb，格式为jpg、png、jpeg，长宽160:260的图片）</p>
                             </Upload>
                             </Col>
                         </Row>
                     </Form-item>
                     <Row>
                         <Col span="24">
-                            <div class="edit_container" style="height:700px">
+                            <div class="edit_container" style="height:700px;width:823px">
                                 <quill-editor 
                                     v-model="form.content" 
                                     ref="myQuillEditor" 
@@ -255,8 +255,31 @@ export default {
 </script>
 
 <style lang="less" scope>
+.ql-snow .ql-tooltip[data-mode=link]::before {
+  content: "请输入链接地址:";
+}
+.ql-snow .ql-tooltip.ql-editing a.ql-action::after {
+    border-right: 0px;
+    content: '保存';
+    padding-right: 0px;
+}
+
+.ql-snow .ql-tooltip[data-mode=video]::before {
+    content: "请输入视频地址:";
+}
+
 .release p {
   margin: 16px;
+}
+.ql-editor p{
+    font:16px/26px '微软雅黑'
+}
+.ql-editor img {
+  width:100%
+}
+.ql-editor .ql-video{
+    width:100%;
+    height:100%;
 }
 
 .release .edit_container,
@@ -266,21 +289,22 @@ export default {
 
 .release .ql-snow .ql-picker.ql-size .ql-picker-label::before,
 .release .ql-snow .ql-picker.ql-size .ql-picker-item::before {
-  content: "14px";
+  content: "16px";
 }
 
-.release .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="small"]::before,
-.release .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="small"]::before {
-  content: "10px";
-}
-.release .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="large"]::before,
-.release .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="large"]::before {
-  content: "18px";
-}
-.release .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="huge"]::before,
-.release .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="huge"]::before {
-  content: "32px";
-}
+
+// .release .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="small"]::before,
+// .release .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="small"]::before {
+//   content: "14px";
+// }
+// .release .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="large"]::before,
+// .release .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="large"]::before {
+//   content: "18px";
+// }
+// .release .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="huge"]::before,
+// .release .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="huge"]::before {
+//   content: "32px";
+// }
 
 .release .ql-snow .ql-picker.ql-header .ql-picker-label::before,
 .release .ql-snow .ql-picker.ql-header .ql-picker-item::before {

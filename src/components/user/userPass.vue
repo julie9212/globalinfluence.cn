@@ -45,7 +45,6 @@ export default {
     methods: {
          // 修改密码
         updatePass (name) {
-            console.log(name)
             this.$refs[name].validate((valid) => {
                 if (valid) {
                     this.Pass(this.formPass);

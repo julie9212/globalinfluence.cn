@@ -16,10 +16,6 @@ export default [
             {
                 path: '/list/:pid/:id',
                 component: () => import('../views/list/list.vue'),
-                meta:{
-                    title: '着迷网话题详情页',
-                    keepAlive: false
-                }
             },
             {
                 path: '/news/:pid/:id',

@@ -64,4 +64,11 @@ li{
 .ql-editor p{
     font:16px/26px '微软雅黑'
 }
+.ql-editor img {
+  width:100%
+}
+.ql-editor .ql-video{
+    width:100%;
+    height:100%
+}
 </style>

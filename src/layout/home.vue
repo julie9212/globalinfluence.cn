@@ -542,7 +542,6 @@ export default {
         inUser(){
             this.$router.push({path:'/user'})
         }
-
     },
     // code计算属性监视
     computed: {
