@@ -274,6 +274,7 @@
                 </Row>
              </div>
             <!-- 修改密码 结束 -->
+            <div slot="footer"></div>
         </Modal>
         <!-- login结束 -->
     </div>
